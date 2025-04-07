@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Donation Alert</title>
+  <style>
+    body { background: transparent; margin: 0; font-family: sans-serif; }
+    #goalbar {
+      width: 100%; background: #ccc; border-radius: 20px;
+      height: 30px; overflow: hidden;
+    }
+    #fill {
+      width: 0%; height: 100%; background: #00ff88;
+      text-align: center; color: black; font-weight: bold;
+    }
+    #alert {
+      margin-top: 10px; color: white; font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div id="goalbar"><div id="fill">0%</div></div>
+  <div id="alert"></div>
+
+  <script>
+    let current = 0;
+    let goal = 100;
+    function updateGoal(amount) {
+      current += amount;
+      let percent = Math.min((current / goal) * 100, 100);
+      document.getElementById("fill").style.width = percent + "%";
+      document.getElementById("fill").textContent = Math.floor(percent) + "%";
+      document.getElementById("alert").textContent = "ขอบคุณสำหรับการโดเนท " + amount + " บาท!";
+    }
+
+    // ตัวอย่างการจำลองโดเนท
+    setTimeout(() => updateGoal(10), 1000); // โดเนท 10 บาท
+    setTimeout(() => updateGoal(30), 4000); // โดเนท 30 บาท
+  </script>
+</body>
+</html>
